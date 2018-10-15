@@ -9,3 +9,13 @@ C:\Users\maxba\source\repos\ssensebot\ssensebot\bin\Debug\HtmlAgilityPack.dll
 C:\Users\maxba\source\repos\ssensebot\ssensebot\bin\Debug\HtmlAgilityPack.pdb
 C:\Users\maxba\source\repos\ssensebot\ssensebot\bin\Debug\HtmlAgilityPack.xml
 C:\Users\maxba\source\repos\ssensebot\ssensebot\obj\Debug\ssensebot.csproj.CopyComplete
+C:\Users\amirh\Desktop\ssenseBot\ssenseBot\ssensebot\ssensebot\bin\Debug\ssensebot.exe.config
+C:\Users\amirh\Desktop\ssenseBot\ssenseBot\ssensebot\ssensebot\bin\Debug\ssensebot.exe
+C:\Users\amirh\Desktop\ssenseBot\ssenseBot\ssensebot\ssensebot\bin\Debug\ssensebot.pdb
+C:\Users\amirh\Desktop\ssenseBot\ssenseBot\ssensebot\ssensebot\bin\Debug\HtmlAgilityPack.dll
+C:\Users\amirh\Desktop\ssenseBot\ssenseBot\ssensebot\ssensebot\bin\Debug\HtmlAgilityPack.pdb
+C:\Users\amirh\Desktop\ssenseBot\ssenseBot\ssensebot\ssensebot\obj\Debug\ssensebot.csprojAssemblyReference.cache
+C:\Users\amirh\Desktop\ssenseBot\ssenseBot\ssensebot\ssensebot\obj\Debug\ssensebot.csproj.CoreCompileInputs.cache
+C:\Users\amirh\Desktop\ssenseBot\ssenseBot\ssensebot\ssensebot\obj\Debug\ssensebot.csproj.CopyComplete
+C:\Users\amirh\Desktop\ssenseBot\ssenseBot\ssensebot\ssensebot\obj\Debug\ssensebot.exe
+C:\Users\amirh\Desktop\ssenseBot\ssenseBot\ssensebot\ssensebot\obj\Debug\ssensebot.pdb

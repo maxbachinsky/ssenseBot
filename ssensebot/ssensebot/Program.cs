@@ -18,15 +18,22 @@ namespace ssensebot
         {
             Stopwatch timer = new Stopwatch();
             timer.Start();
+            string account_email = "amirh102@gmail.com";
+            string account_password = "karate83";
+            string first_name = "Amir";
+            string last_name = "Hedayati";
+            string address = "104 Shadow Falls dr";
+            string postal_code = "L4E 4K2";
+
             IEnumerable<KeyValuePair<string, string>> loginInfo = new List<KeyValuePair<string, string>>()
             {
-                new KeyValuePair<string, string>("email", "maxbachinsky99@gmail.com"),
-                new KeyValuePair<string, string>("password","dodge123" )
+                new KeyValuePair<string, string>("email", account_email),
+                new KeyValuePair<string, string>("password",account_password )
             };
 
             HttpContent login = new FormUrlEncodedContent(loginInfo);
 
-           
+
 
             using (HttpClient client = new HttpClient())
             {
@@ -45,12 +52,15 @@ namespace ssensebot
 
                 response = await client.GetAsync("https://www.ssense.com/en-ca/checkout");
 
-            
+
                 var response2 = await client.GetAsync("https://cc.hostedpci.com/iSynSApp/showPxyPage!ccFrame.action?pgmode1=prod&locationName=checkout1&sid=529081&pluginMode=jq1&fullParentHost=https://www.ssense.com");
+                var rand_response1 = await client.GetAsync("https://cc.hostedpci.com/WBSStatic/site60/proxy/js/jquery-1.11.2.min.js");
+                var rand_response2 = await client.GetAsync("https://cc.hostedpci.com/WBSStatic/site60/proxy/js/jquery.ba-postmessage.2.0.0.min.js");
+                var rand_response3 = await client.GetAsync("https://cc.hostedpci.com/WBSStatic/site60/proxy/js/jsencrypt.min.js");
                 HttpContent content2 = response2.Content;
                 string responseString2 = await content2.ReadAsStringAsync();
-                System.IO.File.WriteAllText(@"C:\Users\maxba\source\repos\ssensebot\JS.txt", responseString2);
-                StreamReader objstream = new StreamReader(@"C:\\Users\maxba\source\repos\ssensebot\JS.txt");
+                System.IO.File.WriteAllText(@".\JS.txt", responseString2);
+                StreamReader objstream = new StreamReader(@".\JS.txt");
                 string[] lines = objstream.ReadToEnd().Split(new char[] { '\n' });
                 var captchaIDTemp = lines[246].Trim();
                 var captchaResponseTemp = lines[247].Trim();
@@ -60,7 +70,8 @@ namespace ssensebot
                 string captchaID = "";
                 string captchaResponse = "";
 
-                for (int i= 22; i<29; i++)
+                //  captchaID = captchaIDTemp
+                for (int i = 22; i < 29; i++)
                 {
                     captchaID = captchaID + captchaIDTemp[i];
                 }
@@ -75,28 +86,28 @@ namespace ssensebot
                     sid = sid + sidTemp[i];
                 }
 
-           
+
 
 
 
                 Console.WriteLine("pulled checkout page");
                 Console.WriteLine(timer.Elapsed);
                 HttpContent content = response.Content;
-                        string responseString = await content.ReadAsStringAsync();
-                        var htmlDoc = new HtmlDocument();
-                        htmlDoc.LoadHtml(responseString);
-                        
+                string responseString = await content.ReadAsStringAsync();
+                var htmlDoc = new HtmlDocument();
+                htmlDoc.LoadHtml(responseString);
 
-                        var CSRFTokenId = htmlDoc.DocumentNode.SelectSingleNode("//input[@name='CSRFTokenId']");
-                        string CSRFTokenIdString = CSRFTokenId.GetAttributeValue("value","nothing");
 
-                        var CSRFTokenValue = htmlDoc.DocumentNode.SelectSingleNode("//input[@name='CSRFTokenValue']");
-                        string CSRFValueString = CSRFTokenValue.GetAttributeValue("value", "nothing");
+                var CSRFTokenId = htmlDoc.DocumentNode.SelectSingleNode("//input[@name='CSRFTokenId']");
+                string CSRFTokenIdString = CSRFTokenId.GetAttributeValue("value", "nothing");
 
-                        var deviceFingerPrint = htmlDoc.DocumentNode.SelectSingleNode("//input[@name='device_fingerprint']");
-                        string deviceFingerPrintString = deviceFingerPrint.GetAttributeValue("value", "nothing");
+                var CSRFTokenValue = htmlDoc.DocumentNode.SelectSingleNode("//input[@name='CSRFTokenValue']");
+                string CSRFValueString = CSRFTokenValue.GetAttributeValue("value", "nothing");
 
-               
+                var deviceFingerPrint = htmlDoc.DocumentNode.SelectSingleNode("//input[@name='device_fingerprint']");
+                string deviceFingerPrintString = deviceFingerPrint.GetAttributeValue("value", "nothing");
+
+
                 //HttpContent content2 = response2.Content;
                 //string responseString2 = await content2.ReadAsStringAsync();
                 //var htmlDoc2 = new HtmlDocument();
@@ -118,32 +129,32 @@ namespace ssensebot
                 new KeyValuePair<string, string>("shipping_id", "49187769"),
                 new KeyValuePair<string, string>("shipping_isnew", "1"),
                 new KeyValuePair<string, string>("device_fingerprint", deviceFingerPrintString),
-                new KeyValuePair<string, string>("shipping_firstname", "Maxim"),
-                new KeyValuePair<string, string>("shipping_lastname", "Bachinsky"),
+                new KeyValuePair<string, string>("shipping_firstname", first_name),
+                new KeyValuePair<string, string>("shipping_lastname", last_name),
                 new KeyValuePair<string, string>("shipping_company", ""),
-                new KeyValuePair<string, string>("shipping_address", "39 Philips Lake Court"),
+                new KeyValuePair<string, string>("shipping_address", address),
                 new KeyValuePair<string, string>("shipping_country","CA"),
                 new KeyValuePair<string, string>("shipping_state", "ON"),
-                new KeyValuePair<string, string>("shipping_postalcode","L4E 0S8"),
+                new KeyValuePair<string, string>("shipping_postalcode",postal_code),
                 new KeyValuePair<string, string>("shipping_city","Richmond Hill"),
                 new KeyValuePair<string, string>("shipping_phone","6472341105"),
                 new KeyValuePair<string, string>("shipping_method", "1"),
                 new KeyValuePair<string, string>("pccc",""),
                 new KeyValuePair<string, string>("paymentMethod","creditcard"),
-                new KeyValuePair<string, string>("creditcardHolderName","maxim bachinsky"),
+                new KeyValuePair<string, string>("creditcardHolderName","Amir Hedayati"),
                 new KeyValuePair<string, string>("creditcardNumber", "4263700000008886"),
                 new KeyValuePair<string, string>("creditcardCVV", "200"),
                 new KeyValuePair<string, string>("creditCardMonth", "02"),
                 new KeyValuePair<string, string>("creditCardYear", "2022"),
                 new KeyValuePair<string, string>("billing_id", "49187769"),
                 new KeyValuePair<string, string>("billing_isnew", "1"),
-                new KeyValuePair<string, string>("billing_firstname","Maxim"),
-                new KeyValuePair<string, string>("billing_lastname", "Bachinsky"),
+                new KeyValuePair<string, string>("billing_firstname",first_name),
+                new KeyValuePair<string, string>("billing_lastname", last_name),
                 new KeyValuePair<string, string>("billing_company",""),
-                new KeyValuePair<string, string>("billing_address", "39 Philips Lake Court"),
+                new KeyValuePair<string, string>("billing_address", address),
                 new KeyValuePair<string, string>("billing_country", "CA"),
                 new KeyValuePair<string, string>("billing_state", "ON"),
-                new KeyValuePair<string, string>("billing_postalcode", "L4E 0S8"),
+                new KeyValuePair<string, string>("billing_postalcode", postal_code),
                 new KeyValuePair<string, string>("billing_city" ,"Richmond Hill"),
                 new KeyValuePair<string, string>("billing_phone", "6472341105")
             };
@@ -168,19 +179,27 @@ namespace ssensebot
                 new KeyValuePair<string, string>("expMonth",""),
                 new KeyValuePair<string, string>("requestRef",""),
                 new KeyValuePair<string, string>("encryptEnabled",""),
-                new KeyValuePair<string, string>("encryptKeyName" ,"") 
-                
+                new KeyValuePair<string, string>("encryptKeyName" ,"")
+
             };
+                Console.WriteLine(captchaID);
+                Console.WriteLine(captchaResponse);
 
                 HttpContent form = new FormUrlEncodedContent(formData);
                 HttpContent checkout = new FormUrlEncodedContent(checkoutInfo);
                 Console.WriteLine("submitting payment");
                 Console.WriteLine(timer.Elapsed);
 
-                await client.PostAsync("https://cc.hostedpci.com/iSynSApp/appUserMapCC!createMapedCC.action", form);
-                await client.PostAsync("http://www.ssense.com/en-ca/checkout", checkout);
-                      
+                var finalHostedResponse = await client.PostAsync("https://cc.hostedpci.com/iSynSApp/appUserMapCC!createMapedCC.action", form);
+                var finalCheckoutResponse = await client.PostAsync("http://www.ssense.com/en-ca/checkout", checkout);
 
+                HttpContent hostedContent = finalHostedResponse.Content;
+                string hostedString = await hostedContent.ReadAsStringAsync();
+                System.IO.File.WriteAllText(@".\hosted.txt", hostedString);
+
+                HttpContent checkoutContent = finalCheckoutResponse.Content;
+                string checkoutString = await checkoutContent.ReadAsStringAsync();
+                System.IO.File.WriteAllText(@".\checkout.html", checkoutString);
 
 
                 Console.WriteLine("checked out");
@@ -201,10 +220,10 @@ namespace ssensebot
             //Console.WriteLine("account logged in");
             //Console.ReadLine();
 
-            
+
             PostRequest();
-            
- 
+
+
 
             Console.ReadLine();
         }
