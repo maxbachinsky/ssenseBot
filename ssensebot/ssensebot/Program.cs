@@ -18,12 +18,12 @@ namespace ssensebot
         {
             Stopwatch timer = new Stopwatch();
             timer.Start();
-            string account_email = "amirh102@gmail.com";
-            string account_password = "karate83";
-            string first_name = "Amir";
-            string last_name = "Hedayati";
-            string address = "104 Shadow Falls dr";
-            string postal_code = "L4E 4K2";
+            string account_email = "random@gmail.com";
+            string account_password = "fakePass";
+            string first_name = "name1";
+            string last_name = "name2";
+            string address = "address";
+            string postal_code = "postal code";
 
             IEnumerable<KeyValuePair<string, string>> loginInfo = new List<KeyValuePair<string, string>>()
             {
@@ -70,8 +70,10 @@ namespace ssensebot
                 string captchaID = "";
                 string captchaResponse = "";
 
-                //  captchaID = captchaIDTemp
-                for (int i = 22; i < 29; i++)
+                captchaID = captchaIDTemp.Substring(22, 29);
+                captchaResponse = captchaResponseTemp.Substring(24, 30);
+                sid = sidTemp.Substring(195, 201);
+                /*for (int i = 22; i < 29; i++)
                 {
                     captchaID = captchaID + captchaIDTemp[i];
                 }
@@ -85,7 +87,7 @@ namespace ssensebot
                 {
                     sid = sid + sidTemp[i];
                 }
-
+                */
 
 
 
@@ -136,13 +138,13 @@ namespace ssensebot
                 new KeyValuePair<string, string>("shipping_country","CA"),
                 new KeyValuePair<string, string>("shipping_state", "ON"),
                 new KeyValuePair<string, string>("shipping_postalcode",postal_code),
-                new KeyValuePair<string, string>("shipping_city","Richmond Hill"),
-                new KeyValuePair<string, string>("shipping_phone","6472341105"),
+                new KeyValuePair<string, string>("shipping_city","City"),
+                new KeyValuePair<string, string>("shipping_phone","1231231234"),
                 new KeyValuePair<string, string>("shipping_method", "1"),
                 new KeyValuePair<string, string>("pccc",""),
                 new KeyValuePair<string, string>("paymentMethod","creditcard"),
-                new KeyValuePair<string, string>("creditcardHolderName","Amir Hedayati"),
-                new KeyValuePair<string, string>("creditcardNumber", "4263700000008886"),
+                new KeyValuePair<string, string>("creditcardHolderName","name name"),
+                new KeyValuePair<string, string>("creditcardNumber", "1234123412341234"),
                 new KeyValuePair<string, string>("creditcardCVV", "200"),
                 new KeyValuePair<string, string>("creditCardMonth", "02"),
                 new KeyValuePair<string, string>("creditCardYear", "2022"),
@@ -155,16 +157,16 @@ namespace ssensebot
                 new KeyValuePair<string, string>("billing_country", "CA"),
                 new KeyValuePair<string, string>("billing_state", "ON"),
                 new KeyValuePair<string, string>("billing_postalcode", postal_code),
-                new KeyValuePair<string, string>("billing_city" ,"Richmond Hill"),
-                new KeyValuePair<string, string>("billing_phone", "6472341105")
+                new KeyValuePair<string, string>("billing_city" ,"City"),
+                new KeyValuePair<string, string>("billing_phone", "1231231234")
             };
 
                 IEnumerable<KeyValuePair<string, string>> formData = new List<KeyValuePair<string, string>>()
             {
                 new KeyValuePair<string, string>("CaptchaId", captchaID),
                 new KeyValuePair<string, string>("CaptchaResp", captchaResponse),
-                new KeyValuePair<string, string>("ccNum", "4263700340598886"),
-                new KeyValuePair<string, string>("ccCVV", "920"),
+                new KeyValuePair<string, string>("ccNum", "1234123412341234"),
+                new KeyValuePair<string, string>("ccCVV", "820"),
                 new KeyValuePair<string, string>("sid", sid),
                 new KeyValuePair<string, string>("ccNumTokenIdx", "1"),
                 new KeyValuePair<string, string>("encryptEnabled", "N"),
