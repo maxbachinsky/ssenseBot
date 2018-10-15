@@ -1,0 +1,25 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio 15
+VisualStudioVersion = 15.0.28010.2041
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ssensebot", "ssensebot\ssensebot.csproj", "{881A604A-7D1C-4AFA-84EF-496AB3C0A672}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{881A604A-7D1C-4AFA-84EF-496AB3C0A672}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{881A604A-7D1C-4AFA-84EF-496AB3C0A672}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{881A604A-7D1C-4AFA-84EF-496AB3C0A672}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{881A604A-7D1C-4AFA-84EF-496AB3C0A672}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+		SolutionGuid = {84D5C2E9-C2E1-4EC9-B15D-90A312479FC9}
+	EndGlobalSection
+EndGlobal

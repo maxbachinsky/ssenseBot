@@ -1,0 +1,11 @@
+C:\Users\maxba\source\repos\ssensebot\ssensebot\obj\Debug\ssensebot.csprojAssemblyReference.cache
+C:\Users\maxba\source\repos\ssensebot\ssensebot\obj\Debug\ssensebot.csproj.CoreCompileInputs.cache
+C:\Users\maxba\source\repos\ssensebot\ssensebot\bin\Debug\ssensebot.exe.config
+C:\Users\maxba\source\repos\ssensebot\ssensebot\bin\Debug\ssensebot.exe
+C:\Users\maxba\source\repos\ssensebot\ssensebot\bin\Debug\ssensebot.pdb
+C:\Users\maxba\source\repos\ssensebot\ssensebot\obj\Debug\ssensebot.exe
+C:\Users\maxba\source\repos\ssensebot\ssensebot\obj\Debug\ssensebot.pdb
+C:\Users\maxba\source\repos\ssensebot\ssensebot\bin\Debug\HtmlAgilityPack.dll
+C:\Users\maxba\source\repos\ssensebot\ssensebot\bin\Debug\HtmlAgilityPack.pdb
+C:\Users\maxba\source\repos\ssensebot\ssensebot\bin\Debug\HtmlAgilityPack.xml
+C:\Users\maxba\source\repos\ssensebot\ssensebot\obj\Debug\ssensebot.csproj.CopyComplete
