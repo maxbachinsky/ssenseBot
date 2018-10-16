@@ -18,12 +18,12 @@ namespace ssensebot
         {
             Stopwatch timer = new Stopwatch();
             timer.Start();
-            string account_email = "random@gmail.com";
-            string account_password = "fakePass";
-            string first_name = "name1";
-            string last_name = "name2";
-            string address = "address";
-            string postal_code = "postal code";
+            string account_email = "amirh102@gmail.com";
+            string account_password = "karate83";
+            string first_name = "Amir";
+            string last_name = "Hedayati";
+            string address = "104 Shadow Falls dr";
+            string postal_code = "L4E 4K2";
 
             IEnumerable<KeyValuePair<string, string>> loginInfo = new List<KeyValuePair<string, string>>()
             {
@@ -33,13 +33,14 @@ namespace ssensebot
 
             HttpContent login = new FormUrlEncodedContent(loginInfo);
 
+            HttpClient client = new HttpClient();
+            client.DefaultRequestHeaders.UserAgent.ParseAdd("Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/69.0.3497.100 Safari/537.36");
 
-
-            using (HttpClient client = new HttpClient())
+            using (client)
             {
 
 
-                client.DefaultRequestHeaders.Authorization = new AuthenticationHeaderValue("Bearer", "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/69.0.3497.100 Safari/537.36");
+               // client.DefaultRequestHeaders.Authorization = new AuthenticationHeaderValue("Bearer", "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/69.0.3497.100 Safari/537.36");
                 HttpResponseMessage response = await client.PostAsync("https://www.ssense.com/en-ca/account/login", login);
                 //HttpContent content = response.Content;
                 Console.WriteLine("logged on");
@@ -70,10 +71,10 @@ namespace ssensebot
                 string captchaID = "";
                 string captchaResponse = "";
 
-                captchaID = captchaIDTemp.Substring(22, 29);
-                captchaResponse = captchaResponseTemp.Substring(24, 30);
-                sid = sidTemp.Substring(195, 201);
-                /*for (int i = 22; i < 29; i++)
+            //    captchaID = captchaIDTemp.Substring(22, 29);
+              //  captchaResponse = captchaResponseTemp.Substring(24, 30);
+                //sid = sidTemp.Substring(195, 201);
+                for (int i = 22; i < 29; i++)
                 {
                     captchaID = captchaID + captchaIDTemp[i];
                 }
@@ -87,7 +88,7 @@ namespace ssensebot
                 {
                     sid = sid + sidTemp[i];
                 }
-                */
+                
 
 
 
@@ -138,13 +139,13 @@ namespace ssensebot
                 new KeyValuePair<string, string>("shipping_country","CA"),
                 new KeyValuePair<string, string>("shipping_state", "ON"),
                 new KeyValuePair<string, string>("shipping_postalcode",postal_code),
-                new KeyValuePair<string, string>("shipping_city","City"),
-                new KeyValuePair<string, string>("shipping_phone","1231231234"),
+                new KeyValuePair<string, string>("shipping_city","Richmond Hill"),
+                new KeyValuePair<string, string>("shipping_phone","6478664949"),
                 new KeyValuePair<string, string>("shipping_method", "1"),
                 new KeyValuePair<string, string>("pccc",""),
                 new KeyValuePair<string, string>("paymentMethod","creditcard"),
-                new KeyValuePair<string, string>("creditcardHolderName","name name"),
-                new KeyValuePair<string, string>("creditcardNumber", "1234123412341234"),
+                new KeyValuePair<string, string>("creditcardHolderName","amir hedayati"),
+                new KeyValuePair<string, string>("creditcardNumber", "4263700000008886"),
                 new KeyValuePair<string, string>("creditcardCVV", "200"),
                 new KeyValuePair<string, string>("creditCardMonth", "02"),
                 new KeyValuePair<string, string>("creditCardYear", "2022"),
@@ -157,16 +158,16 @@ namespace ssensebot
                 new KeyValuePair<string, string>("billing_country", "CA"),
                 new KeyValuePair<string, string>("billing_state", "ON"),
                 new KeyValuePair<string, string>("billing_postalcode", postal_code),
-                new KeyValuePair<string, string>("billing_city" ,"City"),
-                new KeyValuePair<string, string>("billing_phone", "1231231234")
+                new KeyValuePair<string, string>("billing_city" ,"Richmond Hill"),
+                new KeyValuePair<string, string>("billing_phone", "6478664949")
             };
 
                 IEnumerable<KeyValuePair<string, string>> formData = new List<KeyValuePair<string, string>>()
             {
                 new KeyValuePair<string, string>("CaptchaId", captchaID),
                 new KeyValuePair<string, string>("CaptchaResp", captchaResponse),
-                new KeyValuePair<string, string>("ccNum", "1234123412341234"),
-                new KeyValuePair<string, string>("ccCVV", "820"),
+                new KeyValuePair<string, string>("ccNum", "4263700340598886"),
+                new KeyValuePair<string, string>("ccCVV", "920"),
                 new KeyValuePair<string, string>("sid", sid),
                 new KeyValuePair<string, string>("ccNumTokenIdx", "1"),
                 new KeyValuePair<string, string>("encryptEnabled", "N"),
@@ -193,17 +194,28 @@ namespace ssensebot
                 Console.WriteLine(timer.Elapsed);
 
                 var finalHostedResponse = await client.PostAsync("https://cc.hostedpci.com/iSynSApp/appUserMapCC!createMapedCC.action", form);
+                Console.WriteLine("status code" + finalHostedResponse.StatusCode);
+                Console.WriteLine("headers" + finalHostedResponse.Headers);
+                Console.WriteLine("reaseon phrase" + finalHostedResponse.ReasonPhrase);
+                Console.WriteLine("content" + finalHostedResponse.Content.ReadAsStringAsync());
+
                 var finalCheckoutResponse = await client.PostAsync("http://www.ssense.com/en-ca/checkout", checkout);
+                //Console.WriteLine("status code" + finalCheckoutResponse.StatusCode);
+                //Console.WriteLine("headers" + finalCheckoutResponse.Headers);
+                //Console.WriteLine("reaseon phrase" + finalCheckoutResponse.ReasonPhrase);
+                //Console.WriteLine("content" + finalCheckoutResponse.Content);
+            //    Console.log(finalCheckoutResponse.data)
+                var finalRequest = await client.GetAsync("https://www.ssense.com/en-ca/confirmation");
 
                 HttpContent hostedContent = finalHostedResponse.Content;
                 string hostedString = await hostedContent.ReadAsStringAsync();
                 System.IO.File.WriteAllText(@".\hosted.txt", hostedString);
 
-                HttpContent checkoutContent = finalCheckoutResponse.Content;
+                HttpContent checkoutContent = finalRequest.Content;
                 string checkoutString = await checkoutContent.ReadAsStringAsync();
                 System.IO.File.WriteAllText(@".\checkout.html", checkoutString);
 
-
+               // var finalHostedResponse = await client.PostAsync("https://www.ssense.com/en-ca/checkout", form);
                 Console.WriteLine("checked out");
                 Console.WriteLine(timer.Elapsed);
 

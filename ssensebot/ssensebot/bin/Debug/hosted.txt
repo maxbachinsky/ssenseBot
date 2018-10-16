@@ -1,0 +1,1 @@
+hpciStatus=success&nextCaptchaId=038516&nextCaptchaResp=582929&hpciCC=4263700000008886&hpciCVV=200&hpciCCBIN=426370&hpciCCLast4=8886&hpciGtyToken=&hpciGtyTokenAuthResp=&hpciTokenRespEncrypt=&hpci3DSec=&hpci3DSecEnroll=N&hpci3DSecDataId=&hpci3DSecAcsUrl=&hpci3DSecAuthPkt=
